@@ -1,0 +1,652 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------
+// Maestros organizacionales
+// ---------------------------------------------------------------
+
+model Empresa {
+  id        String   @id @default(uuid())
+  nombre    String
+  nit       String?  @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  sedes         Sede[]
+  clientes      Cliente[]
+  contratos     Contrato[]
+  activos       Activo[]
+    proveedores      Proveedor[]
+  transportistas   Transportista[]
+  vehiculos        Vehiculo[]
+  clientesFacturables ClienteFacturable[]
+  liquidacionesCF  LiquidacionCF[]
+  cierresIngreso CierreIngreso[]
+  operaciones      Operacion[]
+
+  @@map("empresa")
+}
+
+model Sede {
+  id        String   @id @default(uuid())
+  empresaId String   @map("empresa_id")
+  nombre    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  empresa Empresa @relation(fields: [empresaId], references: [id])
+  plantas Planta[]
+  operaciones Operacion[]
+
+  @@map("sede")
+}
+
+model Planta {
+  id        String   @id @default(uuid())
+  sedeId    String   @map("sede_id")
+  nombre    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  sede    Sede     @relation(fields: [sedeId], references: [id])
+  bodegas Bodega[]
+
+  @@map("planta")
+}
+
+model Bodega {
+  id        String   @id @default(uuid())
+  plantaId  String   @map("planta_id")
+  nombre    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  planta Planta  @relation(fields: [plantaId], references: [id])
+  zonas  Zona[]
+
+  @@map("bodega")
+}
+
+model Zona {
+  id        String   @id @default(uuid())
+  bodegaId  String   @map("bodega_id")
+  nombre    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  bodega      Bodega       @relation(fields: [bodegaId], references: [id])
+  activos     Activo[]
+  movimientos Movimiento[] @relation("MovimientoDestino")
+
+  @@map("zona")
+}
+
+// ---------------------------------------------------------------
+// Terceros
+// ---------------------------------------------------------------
+
+model Cliente {
+  id         String   @id @default(uuid())
+  empresaId  String   @map("empresa_id")
+  nombre     String
+  documento  String?
+  email      String?
+  telefono   String?
+  direccion  String?
+  reglasJson String   @map("reglas_json")
+  activo     Boolean  @default(true)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  empresa Empresa @relation(fields: [empresaId], references: [id])
+
+  activosCustodia Activo[]
+  movimientos     Movimiento[]
+  novedades       Novedad[]
+  usuarios        Usuario[]
+  contratos       Contrato[]
+  operaciones     Operacion[]
+
+  @@map("cliente")
+}
+
+model Proveedor {
+  id        String   @id @default(uuid())
+  empresaId String   @map("empresa_id")
+  nombre    String
+  documento String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  empresa     Empresa      @relation(fields: [empresaId], references: [id])
+  movimientos Movimiento[]
+
+  @@map("proveedor")
+}
+
+model Transportista {
+  id        String   @id @default(uuid())
+  empresaId String   @map("empresa_id")
+  nombre    String
+  documento String?
+  telefono  String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  empresa     Empresa      @relation(fields: [empresaId], references: [id])
+  movimientos Movimiento[]
+
+  @@map("transportista")
+}
+
+model Vehiculo {
+  id        String   @id @default(uuid())
+  empresaId String   @map("empresa_id")
+  placa     String
+  tipo      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  empresa     Empresa      @relation(fields: [empresaId], references: [id])
+  movimientos Movimiento[]
+
+  @@map("vehiculo")
+}
+
+// ---------------------------------------------------------------
+// Contratos y tarifas (dimensión económica)
+// ---------------------------------------------------------------
+
+model Contrato {
+  id          String    @id @default(uuid())
+  empresaId   String    @map("empresa_id")
+  clienteId   String    @map("cliente_id")
+  tipo        String
+  fechaInicio DateTime  @map("fecha_inicio")
+  fechaFin    DateTime? @map("fecha_fin")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  empresa Empresa @relation(fields: [empresaId], references: [id])
+  cliente Cliente @relation(fields: [clienteId], references: [id])
+
+  tarifas Tarifa[]
+
+  @@index([empresaId], map: "idx_contrato_empresa_id")
+  @@map("contrato")
+}
+
+model Tarifa {
+  id            String   @id @default(uuid())
+  contratoId    String   @map("contrato_id")
+  tipoActivoId  String   @map("tipo_activo_id")
+  valor         Decimal  @db.Decimal(18, 2)
+  fechaVigencia DateTime @map("fecha_vigencia")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  contrato   Contrato   @relation(fields: [contratoId], references: [id])
+  tipoActivo TipoActivo @relation(fields: [tipoActivoId], references: [id])
+
+  @@map("tarifa")
+}
+
+model TipoActivo {
+  id          String   @id @default(uuid())
+  nombre      String
+  descripcion String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  activos   Activo[]
+  tarifas   Tarifa[]
+  poolErcol PoolErcol[]
+
+  @@map("tipo_activo")
+}
+
+// ---------------------------------------------------------------
+// Activos
+// ---------------------------------------------------------------
+
+model Activo {
+  id               String          @id @default(uuid())
+  empresaId        String          @map("empresa_id")
+  codigo           String          @unique
+  tipoActivoId     String          @map("tipo_activo_id")
+  propiedad        Propiedad
+  valorAdquisicion Decimal?        @map("valor_adquisicion") @db.Decimal(18, 2)
+  valorReposicion  Decimal?        @map("valor_reposicion") @db.Decimal(18, 2)
+  estadoFisico     EstadoFisico    @default(BUENO) @map("estado_fisico")
+  estadoLogistico  EstadoLogistico @default(DISPONIBLE) @map("estado_logistico")
+  estadoOperativo  EstadoOperativo @default(LIBRE) @map("estado_operativo")
+  ubicacionId      String?         @map("ubicacion_id")
+  clienteId        String?         @map("cliente_id")
+  qrHash           String?         @map("qr_hash")
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+
+  empresa    Empresa    @relation(fields: [empresaId], references: [id])
+  tipoActivo TipoActivo @relation(fields: [tipoActivoId], references: [id])
+  ubicacion  Zona?      @relation(fields: [ubicacionId], references: [id])
+  cliente    Cliente?   @relation(fields: [clienteId], references: [id])
+
+  lineas       MovimientoLinea[]
+  novedades    Novedad[]
+  kardexEntries KardexEntry[]
+
+  @@map("activo")
+}
+
+model SecuenciaDocumento {
+  id           String   @id @default(uuid())
+  empresaId    String   @map("empresa_id")
+  tipo         String
+  prefijo      String
+  ultimoNumero Int      @default(0) @map("ultimo_numero")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@unique([empresaId, tipo])
+  @@map("secuencia_documento")
+}
+
+// Pool de activos ERCOL: estibas de propiedad ERCOL (sin código/consecutivo
+// individual) que se solicitan al proveedor para cubrir necesidades de despacho
+// de clientes que no usan estibas propias. Se controlan por cantidad y tipo.
+model PoolErcol {
+  id                String   @id @default(uuid())
+  empresaId         String   @map("empresa_id")
+  tipoActivoId      String   @map("tipo_activo_id")
+  cantidadTotal     Int      @default(0) @map("cantidad_total")
+  cantidadEnCliente Int      @default(0) @map("cantidad_en_cliente")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  tipoActivo    TipoActivo        @relation(fields: [tipoActivoId], references: [id])
+  lineaMovs     MovimientoLinea[]
+  kardexEntries KardexEntry[]
+
+  @@unique([empresaId, tipoActivoId])
+  @@map("pool_ercol")
+}
+
+// ---------------------------------------------------------------
+// Movimientos y Kardex
+// ---------------------------------------------------------------
+
+model Movimiento {
+  id               String           @id @default(uuid())
+  empresaId        String           @map("empresa_id")
+  tipo             TipoMovimiento
+  documento        String           @unique
+  fechaEfectiva    DateTime         @map("fecha_efectiva")
+  estado           EstadoMovimiento @default(BORRADOR)
+  origenId         String?          @map("origen_id")
+  destinoId        String?          @map("destino_id")
+  clienteId        String?          @map("cliente_id")
+  proveedorId      String?          @map("proveedor_id")
+  vehiculoId       String?          @map("vehiculo_id")
+  transportistaId  String?          @map("transportista_id")
+  responsableId    String?          @map("responsable_id")
+  correccionDeId   String?          @unique @map("correccion_de_id")
+  motivoCorreccion String?          @map("motivo_correccion")
+  hashIntegridad   String?          @map("hash_integridad")
+  firmaNombre      String?          @map("firma_nombre")
+  firmaDocumento   String?          @map("firma_documento")
+  firmaCargo       String?          @map("firma_cargo")
+  firmaFecha       DateTime?        @map("firma_fecha")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+
+  cliente       Cliente?       @relation(fields: [clienteId], references: [id])
+  proveedor     Proveedor?     @relation(fields: [proveedorId], references: [id])
+  vehiculo      Vehiculo?      @relation(fields: [vehiculoId], references: [id])
+  transportista Transportista? @relation(fields: [transportistaId], references: [id])
+  destino       Zona?          @relation("MovimientoDestino", fields: [destinoId], references: [id])
+  correccionDe  Movimiento?    @relation("MovimientoCorreccion", fields: [correccionDeId], references: [id])
+  correcciones  Movimiento[]   @relation("MovimientoCorreccion")
+
+  lineas        MovimientoLinea[]
+  kardexEntries KardexEntry[]
+  novedades     Novedad[]
+
+  @@map("movimiento")
+}
+
+model MovimientoLinea {
+  id           String        @id @default(uuid())
+  movimientoId String        @map("movimiento_id")
+  activoId     String?       @map("activo_id")
+  poolErcolId  String?       @map("pool_ercol_id")
+  cantidad     Int           @default(1)
+  estadoFisico EstadoFisico? @map("estado_fisico")
+  notas        String?
+
+  movimiento Movimiento @relation(fields: [movimientoId], references: [id], onDelete: Cascade)
+  activo     Activo?    @relation(fields: [activoId], references: [id])
+  poolErcol  PoolErcol? @relation(fields: [poolErcolId], references: [id])
+
+  kardexEntries KardexEntry[]
+
+  @@map("movimiento_linea")
+}
+
+model KardexEntry {
+  id                String    @id @default(uuid())
+  empresaId         String    @map("empresa_id")
+  movimientoId      String    @map("movimiento_id")
+  movimientoLineaId String?   @map("movimiento_linea_id")
+  fechaEfectiva     DateTime  @map("fecha_efectiva")
+  postedAt          DateTime  @default(now()) @map("posted_at")
+  activoId          String?   @map("activo_id")
+  poolErcolId       String?   @map("pool_ercol_id")
+  ubicacionId       String?   @map("ubicacion_id")
+  clienteId         String?   @map("cliente_id")
+  cantidadEntra     Int       @default(0) @map("cantidad_entra")
+  cantidadSale      Int       @default(0) @map("cantidad_sale")
+  saldoDespues      Int       @map("saldo_despues")
+  hashIntegridad    String    @map("hash_integridad")
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  movimiento      Movimiento       @relation(fields: [movimientoId], references: [id])
+  movimientoLinea MovimientoLinea? @relation(fields: [movimientoLineaId], references: [id])
+  activo          Activo?          @relation(fields: [activoId], references: [id])
+  poolErcol       PoolErcol?       @relation(fields: [poolErcolId], references: [id])
+
+  @@map("kardex_entry")
+}
+
+// ---------------------------------------------------------------
+// Novedades
+// ---------------------------------------------------------------
+
+model Novedad {
+  id            String             @id @default(uuid())
+  empresaId     String             @map("empresa_id")
+  activoId      String             @map("activo_id")
+  movimientoId  String?            @map("movimiento_id")
+  clienteId     String?            @map("cliente_id")
+  ubicacionId   String?            @map("ubicacion_id")
+  fecha         DateTime
+  reportanteId  String             @map("reportante_id")
+  descripcion   String
+  estado        EstadoNovedad      @default(ABIERTA)
+  causa         String?
+  responsable   String?
+  valor         Decimal?           @db.Decimal(18, 2)
+  indemnizacion Decimal?           @db.Decimal(18, 2)
+  reparacion    Decimal?           @db.Decimal(18, 2)
+  disposicion   DisposicionNovedad @default(SIN_ACCION)
+  createdAt     DateTime           @default(now()) @map("created_at")
+  updatedAt     DateTime           @updatedAt @map("updated_at")
+
+  activo     Activo      @relation(fields: [activoId], references: [id])
+  movimiento Movimiento? @relation(fields: [movimientoId], references: [id])
+  cliente    Cliente?    @relation(fields: [clienteId], references: [id])
+
+  @@map("novedad")
+}
+
+// ---------------------------------------------------------------
+// Seguridad y auditoría
+// ---------------------------------------------------------------
+
+model Rol {
+  id        String   @id @default(uuid())
+  empresaId String   @map("empresa_id")
+  nombre    String
+  permisos  String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  usuarios Usuario[]
+
+  @@map("rol")
+}
+
+model Usuario {
+  id           String   @id @default(uuid())
+  empresaId    String   @map("empresa_id")
+  rolId        String   @map("rol_id")
+  nombre       String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  activo       Boolean  @default(true)
+  clienteId    String?  @map("cliente_id")
+  ultimaConexionAt DateTime? @map("ultima_conexion_at")
+  ultimaConexionIp String? @map("ultima_conexion_ip")
+  ultimaConexionUserAgent String? @map("ultima_conexion_user_agent")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  rol     Rol      @relation(fields: [rolId], references: [id])
+  cliente Cliente? @relation(fields: [clienteId], references: [id])
+
+  @@map("usuario")
+}
+
+model Auditoria {
+  id        String   @id @default(uuid())
+  empresaId String   @map("empresa_id")
+  usuarioId String?  @map("usuario_id")
+  accion    String
+  entidad   String
+  entidadId String?  @map("entidad_id")
+  detalles  String?
+  ip        String?
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("auditoria")
+}
+
+// ---------------------------------------------------------------
+// Dimensión económica: cobros y liquidaciones
+// ---------------------------------------------------------------
+
+model CobroDiario {
+  id              String   @id @default(uuid())
+  empresaId       String   @map("empresa_id")
+  clienteId       String   @map("cliente_id")
+  contratoId      String?  @map("contrato_id")
+  fecha           DateTime
+  cantidadActivos Int      @map("cantidad_activos")
+  tarifaUnitario  Decimal  @map("tarifa_unitario") @db.Decimal(18, 2)
+  valorTotal      Decimal  @map("valor_total") @db.Decimal(18, 2)
+  liquidacionId   String?  @map("liquidacion_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  liquidacion Liquidacion? @relation(fields: [liquidacionId], references: [id])
+
+  @@map("cobro_diario")
+}
+
+model Liquidacion {
+  id            String   @id @default(uuid())
+  empresaId     String   @map("empresa_id")
+  clienteId     String   @map("cliente_id")
+  periodoInicio DateTime @map("periodo_inicio")
+  periodoFin    DateTime @map("periodo_fin")
+  total         Decimal  @db.Decimal(18, 2)
+  estado        String   @default("ABIERTA")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  cobros CobroDiario[]
+
+  @@map("liquidacion")
+}
+
+// ---------------------------------------------------------------
+// Clientes facturables y plataformas (algoritmo de cobros Excel)
+// ---------------------------------------------------------------
+
+model ClienteFacturable {
+  id           String        @id @default(uuid())
+  empresaId    String
+  nombre       String        @unique
+  tarifaDiaria Decimal       @db.Decimal(18, 2)
+  activo       Boolean       @default(true)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  empresa         Empresa              @relation(fields: [empresaId], references: [id])
+  liquidaciones   LiquidacionCF[]
+
+  @@map("cliente_facturable")
+}
+
+model LiquidacionCF {
+  id            String               @id @default(uuid())
+  empresaId     String
+  clienteFactId String
+  anio          Int
+  mes           Int
+  estibasDia    Int
+  cobro         Decimal              @db.Decimal(18, 2)
+  estado        String               @default("ABIERTA")
+  createdAt     DateTime             @default(now()) @map("created_at")
+  detalles      LiquidacionDetalle[]
+
+  empresa        Empresa               @relation(fields: [empresaId], references: [id])
+  clienteFact    ClienteFacturable     @relation(fields: [clienteFactId], references: [id])
+
+  @@unique([empresaId, clienteFactId, anio, mes])
+  @@map("liquidacion_cf")
+}
+
+model CierreIngreso {
+  id          String    @id @default(uuid())
+  empresaId   String    @map("empresa_id")
+  anio        Int
+  mes         Int
+  diaLimite   Int       @default(2) @map("dia_limite")
+  estado      String    @default("ABIERTO")
+  cerradoAt   DateTime? @map("cerrado_at")
+  cerradoPor  String?   @map("cerrado_por")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  empresa Empresa @relation(fields: [empresaId], references: [id])
+
+  @@unique([empresaId, anio, mes])
+  @@map("cierre_ingreso")
+}
+
+model LiquidacionDetalle {
+  id             String   @id @default(uuid())
+  liquidacionId  String
+  plataformaNombre String
+  fecha          DateTime
+  entregadas     Int
+  devueltas      Int
+  saldoDiario    Int
+  cobroDiario    Decimal  @db.Decimal(18, 2)
+
+  liquidacion LiquidacionCF @relation(fields: [liquidacionId], references: [id])
+
+  @@map("liquidacion_detalle")
+}
+
+// ---------------------------------------------------------------
+// Operaciones (data grid ERP de digitación masiva)
+// ---------------------------------------------------------------
+
+model Operacion {
+  id              String   @id @default(uuid())
+  empresaId       String   @map("empresa_id")
+  fecha           DateTime
+  plataformaId    String?  @map("plataforma_id")
+  clienteId       String?  @map("cliente_id")
+  origen          String?  @map("origen")
+  tipoDocumento   String   @map("tipo_documento")
+  numeroDocumento String   @map("numero_documento")
+  ciudad          String?
+  puntoEntrega    String?  @map("punto_entrega")
+  manifiesto      String?
+  entregadas      Int      @default(0)
+  cartaDevolucion String?  @map("carta_devolucion")
+  devueltas       Int      @default(0)
+  notas           String?
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  empresa    Empresa    @relation(fields: [empresaId], references: [id])
+  plataforma Sede?      @relation(fields: [plataformaId], references: [id])
+  cliente    Cliente?   @relation(fields: [clienteId], references: [id])
+
+  @@index([empresaId, fecha])
+  @@index([empresaId, manifiesto])
+  @@index([empresaId, numeroDocumento])
+  @@map("operacion")
+}
+
+// ---------------------------------------------------------------
+// Enumeraciones
+// ---------------------------------------------------------------
+
+enum Propiedad {
+  PROPIA
+  ERCOL
+  TERCERO
+}
+
+enum EstadoFisico {
+  BUENO
+  REGULAR
+  DANADO
+  CRITICO
+}
+
+enum EstadoLogistico {
+  DISPONIBLE
+  EN_TRANSITO
+  EN_CLIENTE
+  EN_REPARACION
+  PERDIDA
+  BAJA
+}
+
+enum EstadoOperativo {
+  LIBRE
+  BLOQUEADO
+}
+
+enum TipoMovimiento {
+  ENTRADA
+  SALIDA
+  TRASLADO
+  DEVOLUCION
+  PRESTAMO
+  PERDIDA
+  DANIO
+  REPARACION
+  INVENTARIO_INICIAL
+  AJUSTE
+  REVERSION
+}
+
+enum EstadoMovimiento {
+  BORRADOR
+  CONFIRMADO
+  REVERTIDO
+}
+
+enum EstadoNovedad {
+  ABIERTA
+  EN_INVESTIGACION
+  EN_REPARACION
+  CERRADA
+}
+
+enum DisposicionNovedad {
+  REPARACION
+  INDEMNIZACION
+  BAJA
+  SIN_ACCION
+}
+

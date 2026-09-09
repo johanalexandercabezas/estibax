@@ -1,0 +1,15 @@
+==========================================
+  EstibaX - Iniciando todos los servicios
+==========================================
+[1/3] PostgreSQL YA estaba corriendo en :5433
+[2/3] Backend YA estaba corriendo en :3000
+[3/3] Frontend YA estaba corriendo en :5173
+
+==========================================
+  LISTO! Abre en tu navegador:  http://localhost:5173
+------------------------------------------
+  admin@estibax.local     / Admin123!
+  operador@estibax.local  / Operador123!
+  cliente@abc.local       / Cliente123!
+  API + Swagger: http://localhost:3000/api/docs
+==========================================

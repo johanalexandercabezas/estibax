@@ -1,0 +1,195 @@
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTransportesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfiguracionModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mClientesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mActivosModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPortalModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEconomicoModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditoriaModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNovedadesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMovimientosModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +61ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/health, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/health/db, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuditoriaController {/auditoria}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auditoria, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mClientesController {/clientes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clientes, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clientes/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clientes/:id/balance-devoluciones, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clientes, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clientes/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mActivosController {/activos}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/tipos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/siguiente-codigo, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/codigo/:codigo, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/:id/bloquear, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/activos/:id/desbloquear, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMovimientosController {/movimientos}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/movimientos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/movimientos/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/movimientos, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/movimientos/:id/confirmar, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/movimientos/:id/revertir, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNovedadesController {/novedades}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/novedades, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/novedades/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/novedades, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/novedades/:id/investigar, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/novedades/:id/resolver, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/novedades/:id/completar-reparacion, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPortalController {/portal}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/portal/mis-activos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/portal/mis-movimientos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/portal/balance, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEconomicoController {/economico}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/economico/contratos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/economico/contratos/:id/tarifas, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/economico/contratos/:id/cobro-diario, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/economico/liquidaciones, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/economico/liquidaciones, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTransportesController {/transportes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/transportes/vehiculos, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/transportes/transportistas, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mConfiguracionController {/configuracion}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/empresa, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/ubicaciones, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/usuarios, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/sedes, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/sedes/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/tipos-activo, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/tipos-activo/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/roles, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/roles/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/usuarios, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/configuracion/usuarios/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 17548  - [39m01/09/2026, 9:59:51 a. m. [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +32ms[39m
+EstibaX backend running on http://localhost:3000
+Swagger docs: http://localhost:3000/api/docs
+[31m[Nest] 17548  - [39m01/09/2026, 10:32:56 a. m. [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31m
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Can't reach database server at `127.0.0.1:5433`
+
+Please make sure your database server is running at `127.0.0.1:5433`.[39m
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Can't reach database server at `127.0.0.1:5433`
+
+Please make sure your database server is running at `127.0.0.1:5433`.
+    at Ln.handleRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7753)
+    at Ln.handleAndLogRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at async l (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async AuthService.login (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:25)
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-proxy.js:9:17
+[31m[Nest] 17548  - [39m01/09/2026, 10:41:19 a. m. [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31m
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Can't reach database server at `127.0.0.1:5433`
+
+Please make sure your database server is running at `127.0.0.1:5433`.[39m
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Can't reach database server at `127.0.0.1:5433`
+
+Please make sure your database server is running at `127.0.0.1:5433`.
+    at Ln.handleRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7753)
+    at Ln.handleAndLogRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at async l (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async AuthService.login (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:25)
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-proxy.js:9:17
+[31m[Nest] 17548  - [39m01/09/2026, 2:02:50 p. m. [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31m
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Can't reach database server at `127.0.0.1:5433`
+
+Please make sure your database server is running at `127.0.0.1:5433`.[39m
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Can't reach database server at `127.0.0.1:5433`
+
+Please make sure your database server is running at `127.0.0.1:5433`.
+    at Ln.handleRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7753)
+    at Ln.handleAndLogRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at async l (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async AuthService.login (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:25)
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-proxy.js:9:17
+[31m[Nest] 17548  - [39m01/09/2026, 2:22:40 p. m. [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31m
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Error in connector: Error querying the database: FATAL: the database system is starting up[39m
+PrismaClientUnknownRequestError: 
+Invalid `this.prisma.usuario.findUnique()` invocation in
+c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:51
+
+  73     return this.generateToken(usuario);
+  74 }
+  75 async login(dto) {
+→ 76     const usuario = await this.prisma.usuario.findUnique(
+Error in connector: Error querying the database: FATAL: the database system is starting up
+    at Ln.handleRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7943)
+    at Ln.handleAndLogRequestError (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at async l (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async AuthService.login (c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\dist\auth\auth.service.js:76:25)
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async c:\Users\Jcabezas\Downloads\SOLUCI~1\EstibaX\backend\node_modules\@nestjs\core\router\router-proxy.js:9:17

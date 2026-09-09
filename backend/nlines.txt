@@ -1,0 +1,1 @@
+(Get-Content prisma\seed.ts).Count
